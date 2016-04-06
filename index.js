@@ -3,6 +3,7 @@
 var http = 			require('http');
 var eventsConfig = 	require('./eventsConfig').events;
 var Hotel =			require('./hotel');
+var hotelsConfig = 	require('./hotelsConfig').hotels;
 
 var logText = '';						//string for all server log
 
@@ -21,7 +22,7 @@ function saveLog(text) {  //saving all the logs in one variable
 	return text;
 }
 
-var hotel = new Hotel('Milton', 'Motel');					//creating new instance of hotel
+var hotel = new Hotel(hotelsConfig.Milton.name, hotelsConfig.Milton.branch);					//creating new instance of hotel
 hotel.on(eventsConfig.LikesChanged, displayLikes);			//configures action when likes amount will change
 hotel.on(eventsConfig.NegativeLikes, negativeLikesError);	//configures action when likes amount reduce to negative
 
